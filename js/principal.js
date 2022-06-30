@@ -1,4 +1,5 @@
 var pacientes = document.querySelectorAll(".paciente");
+console.log(pacientes);
 
 for (var i = 0; i < pacientes.length; i++) {
   var paciente = pacientes[i];
@@ -17,12 +18,14 @@ for (var i = 0; i < pacientes.length; i++) {
     console.log("Peso incorrecto");
     tdIMC.textContent = "Peso incorrecto";
     pesosEsValido = false;
+    paciente.classList.add("paciente-incorrecto");
   }
 
   if (altura < 0 || altura > 3.0) {
     console.log("Altura incorrecto");
     tdIMC.textContent = "Altura incorrecta";
     alturaEsValida = false;
+    paciente.classList.add("paciente-incorrecto");
   }
 
   if (pesosEsValido && alturaEsValida) {
