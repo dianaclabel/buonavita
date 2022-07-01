@@ -1,5 +1,13 @@
+var botonAdicionar = document.querySelector("#adicionar-paciente");
+
+botonAdicionar.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  var form = document.querySelector("#form-adicionar");
+  console.log(form.altura);
+});
+
 var pacientes = document.querySelectorAll(".paciente");
-console.log(pacientes);
 
 for (var i = 0; i < pacientes.length; i++) {
   var paciente = pacientes[i];
