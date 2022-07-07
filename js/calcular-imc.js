@@ -28,7 +28,11 @@ for (var i = 0; i < pacientes.length; i++) {
   }
 
   if (pesosEsValido && alturaEsValida) {
-    var imc = peso / (altura * altura);
-    tdIMC.textContent = imc.toFixed(2);
+    tdIMC.textContent = calcularImc(peso, altura);
   }
+}
+
+function calcularImc(peso, altura) {
+  var imc = peso / (altura * altura);
+  return imc.toFixed(2);
 }
