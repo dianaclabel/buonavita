@@ -4,11 +4,7 @@ botonAdicionar.addEventListener("click", function (event) {
   event.preventDefault();
   //captura el emento del formulario
   var form = document.querySelector("#form-adicionar");
-  //se busca y captura la infromacion dentro del formulario
-  var nombre = form.nombre.value;
-  var peso = form.peso.value;
-  var altura = form.altura.value;
-  var gordura = form.gordura.value;
+  var paciente = capturandoDatosPaciente(form);
 
   var tabla = document.querySelector("#tabla-pacientes");
 
@@ -34,3 +30,12 @@ botonAdicionar.addEventListener("click", function (event) {
 
   tabla.appendChild(pacienteTr);
 });
+
+function capturandoDatosPaciente(form) {
+  //se busca y captura la infromacion dentro del formulario
+  var nombre = form.nombre.value;
+  var peso = form.peso.value;
+  var altura = form.altura.value;
+  var gordura = form.gordura.value;
+  return;
+}
