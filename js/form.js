@@ -8,6 +8,7 @@ botonAdicionar.addEventListener("click", function (event) {
   var pacienteTr = construirTr(paciente);
   var tabla = document.querySelector("#tabla-pacientes");
   tabla.appendChild(pacienteTr);
+  form.reset();
 });
 
 function capturandoDatosPaciente(form) {
@@ -38,6 +39,13 @@ function construirTr(paciente) {
   pacienteTr.appendChild(alturaTd);
   pacienteTr.appendChild(gorduraTd);
   pacienteTr.appendChild(imcTd);
+  /*
+  pacienteTr.appendChild(construirTd(paciente.nombre, "info-nombre"));
+  pacienteTr.appendChild(construirTd(paciente.peso, "info-peso"));
+  pacienteTr.appendChild(construirTd(paciente.altura, "info-altura"));
+  pacienteTr.appendChild(construirTd(paciente.gordura, "info-gordura"));
+  pacienteTr.appendChild(construirTd(paciente.imc, "info-imc"));
+*/
 
   return pacienteTr;
 }
