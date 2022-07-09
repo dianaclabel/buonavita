@@ -1,26 +1,37 @@
-var botonAdicionar = document.querySelector("#adicionar-paciente");
+botonAdicionar = document.querySelector("#adicionar-paciente");
 
 botonAdicionar.addEventListener("click", function (event) {
   event.preventDefault();
   //captura el emento del formulario
   var form = document.querySelector("#form-adicionar");
   var paciente = capturandoDatosPaciente(form);
-
+  var pacienteTr = construirTr(paciente);
   var tabla = document.querySelector("#tabla-pacientes");
+  tabla.appendChild(pacienteTr);
+});
 
+function capturandoDatosPaciente(form) {
+  //se busca y captura la infromacion dentro del formulario
+  var paciente = {
+    nombre: form.nombre.value,
+    peso: form.peso.value,
+    altura: form.altura.value,
+    gordura: form.gordura.value,
+    imc: calcularImc(form.peso.value, form.altura.value),
+  };
+  return paciente;
+}
+
+function construirTr(paciente) {
   //createElemnt() nos permite crear un elemnto de HTML desde js
-  pacienteTr = document.createElement("tr");
-  nombreTd = document.createElement("td");
-  alturaTd = document.createElement("td");
-  pesoTd = document.createElement("td");
-  gorduraTd = document.createElement("td");
-  imcTd = document.createElement("td");
+  var pacienteTr = document.createElement("tr");
 
-  nombreTd.textContent = nombre;
-  alturaTd.textContent = altura;
-  pesoTd.textContent = peso;
-  gorduraTd.textContent = gordura;
-  imcTd.textContent = calcularImc(peso, altura);
+  var nombreTd = construirTd(paciente.nombre, "info-nombre");
+  var pesoTd = construirTd(paciente.peso, "info-altura");
+  var alturaTd = construirTd(paciente.altura, "info-peso");
+  var gorduraTd = construirTd(paciente.gordura, "info-gordura");
+  var imcTd = construirTd(paciente.imc, "info-imc");
+
   // insertamos los td  dentro del  tr
   pacienteTr.appendChild(nombreTd);
   pacienteTr.appendChild(pesoTd);
@@ -28,14 +39,12 @@ botonAdicionar.addEventListener("click", function (event) {
   pacienteTr.appendChild(gorduraTd);
   pacienteTr.appendChild(imcTd);
 
-  tabla.appendChild(pacienteTr);
-});
+  return pacienteTr;
+}
 
-function capturandoDatosPaciente(form) {
-  //se busca y captura la infromacion dentro del formulario
-  var nombre = form.nombre.value;
-  var peso = form.peso.value;
-  var altura = form.altura.value;
-  var gordura = form.gordura.value;
-  return;
+function construirTd(dato, clase) {
+  var td = document.createElement("td");
+  td.classList.add(clase);
+  td.textContent = dato;
+  return td;
 }
