@@ -41,7 +41,7 @@ function validarPeso(peso) {
   if (peso >= 0 && peso < 1000) {
     return true;
   } else {
-    false;
+    return false;
   }
 }
 
@@ -49,6 +49,6 @@ function validarAltura(altura) {
   if (altura >= 0 && altura < 3.0) {
     return true;
   } else {
-    false;
+    return false;
   }
 }

@@ -7,10 +7,10 @@ botonAdicionar.addEventListener("click", function (event) {
   var paciente = capturandoDatosPaciente(form);
   var pacienteTr = construirTr(paciente);
 
-  var error = validarPaciente(paciente);
-  if (error.length > 0) {
+  var errores = validarPaciente(paciente);
+  if (errores.length > 0) {
     var mensajeError = document.querySelector("#mensaje-error");
-    mensajeError.textContext = error;
+    mensajeError.textContent = error;
     return;
   }
   // el return no permitira que se ejecute las demas lineas de codigo
@@ -66,9 +66,15 @@ function construirTd(dato, clase) {
 }
 
 function validarPaciente(paciente) {
+  var errores = [];
+
   if (!validarPeso(paciente.peso)) {
-    return "El peso es incorrecto";
-  } else {
-    return "";
+    errores.push("El peso es incorrecto");
   }
+
+  if (!validarAltura(paciente.altura)) {
+    errores.push("El altura  es incorrecto");
+  }
+
+  return errores;
 }
