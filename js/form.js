@@ -9,8 +9,7 @@ botonAdicionar.addEventListener("click", function (event) {
 
   var errores = validarPaciente(paciente);
   if (errores.length > 0) {
-    var mensajeError = document.querySelector("#mensaje-error");
-    mensajeError.textContent = error;
+    exhibirMensajesErrores(errores);
     return;
   }
   // el return no permitira que se ejecute las demas lineas de codigo
@@ -77,4 +76,13 @@ function validarPaciente(paciente) {
   }
 
   return errores;
+}
+
+function exhibirMensajesErrores(errores) {
+  var ul = document.querySelector("#mensajes-errores");
+  errores.forEach(function (error) {
+    var li = document.createElement("li");
+    li.textContent = error;
+    ul.appendChild(li);
+  });
 }
