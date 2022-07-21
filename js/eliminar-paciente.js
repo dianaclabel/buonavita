@@ -6,6 +6,7 @@ tabla.addEventListener("dblclick", function (event) {
   //el even.target nos da info  donde sucedio el evento
   //ParentNode hace que se refiera al padre donde se selecciono.es decir "tr"
   event.target.parentNode.remove();
+  event.target.parentNode.classList.add("fadeOut");
 });
 
 /*
