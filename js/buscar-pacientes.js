@@ -9,7 +9,9 @@ botonBuscar.addEventListener("click", function () {
   );
   //El evento load se dispara cuando un recurso y sus recursos dependientes han terminado de cargar.
   xhr.addEventListener("load", function () {
-    console.log(xhr.responseText);
+    var respuesta = xhr.responseText;
+    console.log(respuesta);
+    console.log(typeof respuesta);
   });
   xhr.send();
 });
