@@ -12,6 +12,15 @@ botonBuscar.addEventListener("click", function () {
     var respuesta = xhr.responseText;
     console.log(respuesta);
     console.log(typeof respuesta);
+
+    var pacientes = JSON.parse(respuesta);
+
+    pacientes.forEach(function(paciente){
+      adicionarPacienteTabla(paciente);
+      console.log(paciente);
+    });
+
   });
   xhr.send();
 });
+ 
